@@ -1,0 +1,1 @@
+/home/deimos/Software\ dev/Rust/Basics-of-Rust/Chapter\ 3/Variables\ and\ mutability/variables/target/debug/variables: /home/deimos/Software\ dev/Rust/Basics-of-Rust/Chapter\ 3/Variables\ and\ mutability/variables/src/main.rs
