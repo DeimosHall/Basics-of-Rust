@@ -1,0 +1,1 @@
+/home/deimos/Software\ dev/Rust/Basics-of-Rust/Chapter\ 3/Exercises/temperature_converter/target/debug/temperature_converter: /home/deimos/Software\ dev/Rust/Basics-of-Rust/Chapter\ 3/Exercises/temperature_converter/src/main.rs
