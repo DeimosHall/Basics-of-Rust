@@ -1,0 +1,1 @@
+/home/deimos/Software\ Dev/Rust/Basics-of-Rust/Chapter\ 10/traits/target/debug/traits: /home/deimos/Software\ Dev/Rust/Basics-of-Rust/Chapter\ 10/traits/src/lib.rs /home/deimos/Software\ Dev/Rust/Basics-of-Rust/Chapter\ 10/traits/src/main.rs
