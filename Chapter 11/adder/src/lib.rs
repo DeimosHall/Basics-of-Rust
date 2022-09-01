@@ -1,3 +1,7 @@
+pub fn add_two(number: i32) -> i32 {
+    number + 2
+}
+
 #[cfg(test)]
 mod tests {
 
@@ -8,7 +12,10 @@ mod tests {
         assert_eq!(2 + 2, 4);
     }
 
+    // If at least a unit test failed, integration test won't run, so that's why
+    // I added the ignore to allow the code run the integration test
     #[test]
+    #[ignore]
     fn another() {
         panic!("Panic makes test failed");
     }
