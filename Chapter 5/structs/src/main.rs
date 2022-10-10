@@ -11,7 +11,7 @@ struct Color(i32, i32, i32);
 struct Point(i32, i32, i32);
 
 // Unit-like structs
-struc AlwaysEqual;
+struct AlwaysEqual;
 
 fn main() {
 

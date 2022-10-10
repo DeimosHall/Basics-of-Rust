@@ -20,7 +20,7 @@ pub fn eat_at_restaurant() {
 #[allow(dead_code)]
 mod customer {
     pub fn eat_at_restaurant() {
-        // supper access to a top level in the tree of filesystem
+        // super access to a top level in the tree of filesystem
         super::hosting::add_to_waitlist();
     }
 }
