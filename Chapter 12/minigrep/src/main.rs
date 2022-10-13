@@ -22,9 +22,6 @@ fn main() {
         process::exit(1);
     });
 
-    println!("Searching for {}", config.query);
-    println!("In file {}", config.file_path);
-
     /*
      * The code will be executed only if run returns an Err value.
      * We do not use unwrap_or_else here because we do not care about
