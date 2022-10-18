@@ -73,5 +73,32 @@ fn main() {
     let s = example_closure("Hello");
     //let n = example_closure(5);
 
-    
+    // Capturing references or moving ownership
+    println!("\nCapturing references or moving ownership\n");
+    let mut list = vec![1, 2, 3];
+    println!("Before defining closure: {:?}", list);
+
+    {
+        // We store a closure into a variable
+        let only_borrows = || println!("From closure: {:?}", list);
+
+        println!("Before calling closure: {:?}", list);
+        // We can call the closure with the variable name and parentheses
+        only_borrows();
+        println!("After calling closure: {:?}", list);
+    }
+
+    println!("\nAdding an element with a closure");
+    println!("Before defining closure: {:?}", list);
+
+    println!("let mut borrows_mutably = || list.push(7);");
+    let mut borrows_mutably = || list.push(7);
+
+    borrows_mutably();
+    println!("After calling closure: {:?}", list);
+
+    // Using threads and the move keyword
+    thread::spawn(move || println!("From thread: {:?}", list))
+        .join()
+        .unwrap()
 }
