@@ -1,0 +1,1 @@
+/home/deimos/Software-dev/Rust/Basics-of-Rust/Chapter\ 13/another_closures_example/target/debug/another_closures_example: /home/deimos/Software-dev/Rust/Basics-of-Rust/Chapter\ 13/another_closures_example/src/main.rs
