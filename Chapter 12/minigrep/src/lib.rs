@@ -1,6 +1,6 @@
 // fs is to manage file system
-use std::{fs, error::Error};
 use std::env;
+use std::{error::Error, fs};
 
 pub struct Config {
     pub query: String,
@@ -22,25 +22,41 @@ impl Config {
     } */
 
     // Result<Ok, Err>
-    pub fn build(args: &[String]) -> Result<Config, &'static str> {
+    // args can be any time that implements the Iterator trait
+    // and returns String items
+    pub fn build(mut args: impl Iterator<Item = String>) -> Result<Config, &'static str> {
+        /*
         if args.len() < 3 {
             return Err("not enough arguments");
         } else if args.len() > 3 {
             return Err("too many arguments");
-        }
+        } */
 
-        let query = args[1].clone();
-        let file_path = args[2].clone();
+        args.next(); // We ignore the name of the program here
+
+        let query = match args.next() {
+            Some(args) => args,
+            None => return Err("Didn't get any query string"),
+        };
+
+        let file_path = match args.next() {
+            Some(args) => args,
+            None => return Err("Didn't get any file path"),
+        };
 
         /*
          * export IGNORE_CASE=1 -> It will create the eviroment
          * variable that will be available only in that shell
          * session
-        */
+         */
         let ignore_case = env::var("IGNORE_CASE").is_ok();
         println!("IGNORE_CASE: {}", ignore_case);
 
-        Ok(Config { query, file_path, ignore_case, })
+        Ok(Config {
+            query,
+            file_path,
+            ignore_case,
+        })
     }
 }
 
@@ -77,16 +93,22 @@ pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
 }
 
 pub fn search_case_insensitive<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
+    /*
     let query = query.to_lowercase();
     let mut results = Vec::new();
 
     for line in contents.lines() {
-        if line.to_lowercase().contains(&query) {
-            results.push(line);
-        }
+    if line.to_lowercase().contains(&query) {
+    results.push(line);
+    }
     }
 
-    results
+    results */
+
+    contents
+        .lines()
+        .filter(|line| line.contains(query))
+        .collect()
 }
 
 #[cfg(test)]
@@ -114,6 +136,9 @@ safe, fast, productive.
 Pick three.
 Trust me.";
 
-        assert_eq!(vec!["Rust:", "Trust me."], search_case_insensitive(query, contents));
+        assert_eq!(
+            vec!["Rust:", "Trust me."],
+            search_case_insensitive(query, contents)
+        );
     }
 }

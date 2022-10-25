@@ -5,7 +5,7 @@ use minigrep::Config;
 
 fn main() {
     // collect() converts an iterator into a vector
-    let args: Vec<String> = env::args().collect();
+    //let args: Vec<String> = env::args().collect();
     //dbg!(args);
     //println!("{:?}", args);
 
@@ -15,7 +15,7 @@ fn main() {
      * If build returns and Err value, the code in the closure will be
      * exected.
     */
-    let config = Config::build(&args).unwrap_or_else(|err| {
+    let config = Config::build(env::args()).unwrap_or_else(|err| {
         eprintln!("Problem parsing arguments: {}", err);
         eprintln!("Expected: word file.txt");
         // A nonzero value means the program finishes with a problem
