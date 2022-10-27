@@ -1,12 +1,24 @@
+//! This is the documentation for the entire lib file.
+//! The syntaxis is //!
+
 #[derive(PartialEq, Debug)]
 struct Shoe {
     size: u32,
     style: String,
 }
+// Only public items can be documented to be viewed in HTML
+/// A hello world
+/// # Example
+/// ```
+/// say_hello();
+/// ```
+pub fn say_hello() {
+    println!("Hello world :D");
+}
 
 fn shoes_in_size(shoes: Vec<Shoe>, shoe_size: u32) -> Vec<Shoe> {
     // into_iter takes ownership of the vector
-    shoes.into_iter().filter(|s| s.size == shoe_size).collect()
+    shoes.into_iter().filter(|shoe| shoe.size == shoe_size).collect()
 }
 
 #[cfg(test)]
