@@ -1,7 +1,7 @@
 # My implementation of The Rust Programming Language book
 ## The hello world looks like this
 
-~~~
+~~~rust
 fn main() {
     println!("Hello world :D");
 }
