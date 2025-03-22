@@ -10,8 +10,8 @@ fn main() {
     println!("The value of y is: {}", y);
 
     // Constants
-    const DEAY_HOURS: u32 = 24;
-    println!("The value of DEAY_HOURS is: {}", DEAY_HOURS);
+    const DAY_HOURS: u32 = 24;
+    println!("The value of DAY_HOURS is: {}", DAY_HOURS);
 
     // Shadowing
     let z = 5;
