@@ -24,6 +24,10 @@ fn main() {
     // println!("x: {x}"); // Uncoment to see the error
     println!("y: {y}");
 
+    let mut s = String::from("Hello");
+    s = String::from("ahoy");
+    println!("s: {s}");
+
     let x = String::from("Value");
     println!("x: {x}");
     takes_ownership(x);
