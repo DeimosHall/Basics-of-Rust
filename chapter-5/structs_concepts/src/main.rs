@@ -29,6 +29,9 @@ impl fmt::Debug for Color {
     }
 }
 
+// Unit-Like struct
+struct AlwasyEqual;
+
 fn main() {
     let user = User {
         name: String::from("Cayuya"),
@@ -64,6 +67,8 @@ fn main() {
 
     let white = Color(255, 255, 255);
     println!("white: {:#?}", white);
+
+    let subject = AlwasyEqual;
 }
 
 fn build_user(name: String, age: u8) -> User {
