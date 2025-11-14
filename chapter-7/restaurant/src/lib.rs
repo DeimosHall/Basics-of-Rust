@@ -1,15 +1,19 @@
-mod front_of_house {
-    pub mod hosting {
-        pub fn add_to_wait_list() {}
-        fn seat_at_table() {}
-    }
+// mod front_of_house {
+//     pub mod hosting {
+//         pub fn add_to_wait_list() {}
+//         fn seat_at_table() {}
+//     }
 
-    mod serving {
-        fn take_order() {}
-        fn serve_order() {}
-        fn take_payment() {}
-    }
-}
+//     mod serving {
+//         fn take_order() {}
+//         fn serve_order() {}
+//         fn take_payment() {}
+//     }
+// }
+
+// Separating the front_of_house module to another file
+
+mod front_of_house;
 
 fn deliver_order() {}
 
@@ -44,12 +48,17 @@ mod back_of_house {
     fn cook_order() {}
 }
 
+pub use crate::front_of_house::hosting;
+
 pub fn eat_at_retaurant() {
     // Absolute path
     crate::front_of_house::hosting::add_to_wait_list();
 
     // Relative path
     front_of_house::hosting::add_to_wait_list();
+
+    // Using shortcut
+    hosting::add_to_wait_list();
 
     // Order a breakfast in the summer with Rye toast.
     let mut meal = back_of_house::Breakfast::summer("Rye");
@@ -64,4 +73,5 @@ pub fn eat_at_retaurant() {
     // If enum is public, fields are public
     let order1 = back_of_house::Appetizer::Soup;
     let order2 = back_of_house::Appetizer::Salad;
+
 }
