@@ -1,4 +1,5 @@
-# My implementation of The Rust Programming Language book
+# Code examples of The Rust Programming Language book
+
 ## The hello world looks like this
 
 ~~~rust
