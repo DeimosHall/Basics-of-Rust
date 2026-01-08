@@ -60,4 +60,24 @@ fn main() {
     thread::spawn(move || println!("From thread: {list:?}"))
         .join()
         .unwrap();
+    
+    // There are three types of traits we can use to create our closures
+    // Fn -> Borrows values immutably (&T) -> Can be called multiple times; does not modify its environment.
+    // FnMut -> Borrows values mutably (&mut T) -> Can be called multiple times; can modify its environment.
+    // FnOnce -> Consumes values (T) -> Can be called only once because it moves values out of its environment.
+    
+    let my_closure = |x| {
+        println!("Calling closure from function!");
+        println!("Value: {}", x);
+    };
+    function(my_closure);
+}
+
+fn function<F>(closure: F)
+    where
+        F: Fn(f32)
+    {
+    println!("Inside function");
+    let value = 5.3;
+    closure(value);
 }
