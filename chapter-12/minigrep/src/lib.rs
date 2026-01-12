@@ -1,15 +1,12 @@
+// Using iterator adapters
 pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
-    let mut results: Vec<&str> = vec![];
-    
-    for line in contents.lines() {
-        if line.contains(query) {
-            results.push(line);
-        }
-    }
-    
-    results
+    contents
+        .lines()
+        .filter(|line| line.contains(query))
+        .collect()
 }
 
+// Using for loop
 pub fn search_case_insensitive<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
     let mut results: Vec<&str> = vec![];
     let query = query.to_lowercase();
