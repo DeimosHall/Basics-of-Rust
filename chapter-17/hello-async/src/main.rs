@@ -40,7 +40,7 @@ fn main() {
     trpl::block_on(async {
         match page_title(url1).await {
             Some(title) => println!("Title: {}", title.trim()),
-            None => println!("No title found")
+            None => println!("No title found"),
         }
     });
 
@@ -50,17 +50,16 @@ fn main() {
         let title_fut_1 = page_title2(url1);
         let title_fut_2 = page_title2(url2);
 
-        let (url, maybe_title) =
-            match trpl::select(title_fut_1, title_fut_2).await {
-                Either::Left(left) => left,
-                Either::Right(right) => right,
-            };
+        let (url, maybe_title) = match trpl::select(title_fut_1, title_fut_2).await {
+            Either::Left(left) => left,
+            Either::Right(right) => right,
+        };
 
         // println!("{url} returned first");
         println!("{url} returned first");
-                match maybe_title {
-                    Some(title) => println!("Its page title was: '{}'", title.trim()),
-                    None => println!("It had no title."),
-                }
+        match maybe_title {
+            Some(title) => println!("Its page title was: '{}'", title.trim()),
+            None => println!("It had no title."),
+        }
     })
 }
